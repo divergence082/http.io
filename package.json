@@ -1,4 +1,14 @@
 {
   "name": "http.io",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "devDependencies": {
+    "yaa": "0.0.1"
+  },
+  "scripts": {
+    "clear": "rm -rf bin node_modules && npm i",
+    "lint": "node ./build.js lint",
+    "check": "node ./build.js check",
+    "compile": "node ./build.js compile",
+    "build": "npm run clear && npm run compile"
+  }
 }
