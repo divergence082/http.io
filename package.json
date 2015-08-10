@@ -1,14 +1,37 @@
 {
   "name": "http.io",
   "version": "0.0.1",
+  "main": "bin/index.js",
+  "dependencies": {
+    "codec": "0.0.3"
+  },
   "devDependencies": {
     "yaa": "0.0.1"
   },
   "scripts": {
-    "clear": "rm -rf bin node_modules && npm i",
     "lint": "node ./build.js lint",
     "check": "node ./build.js check",
     "compile": "node ./build.js compile",
-    "build": "npm run clear && npm run compile"
+    "test": "node ./test/codec/codec.js",
+    "build": "npm run lint && npm run check && npm run compile"
+  },
+  "closure-compiler": {
+    "path": "/usr/lib/closure-compiler/closure-compiler.jar",
+    "externs": [
+      "externs/url.js",
+      "externs/events.js",
+      "externs/net.js",
+      "externs/stream.js",
+      "externs/stdio.js",
+      "externs/http.js",
+      "externs/buffer.js",
+      "node_modules/codec/externs/index.js"
+    ],
+    "flags": [
+      "--warning_level=VERBOSE",
+      "--language_in=ECMASCRIPT5_STRICT",
+      "--jscomp_error=checkTypes",
+      "--jscomp_error=suspiciousCode"
+    ]
   }
 }

@@ -5,6 +5,7 @@ var fs = require('fs');
 var path = require('path');
 var cp = require('child_process');
 var yaa = require('yaa');
+var pack = require('./package.json');
 
 
 /**
@@ -130,36 +131,30 @@ build.__DEFAULT_OUTPUT = 'bin/index.js';
 
 
 /**
+ * @type {!Object}
+ */
+build.__CLOSURE_COMPILER_CONFIG = pack['closure-compiler'] || {};
+
+
+/**
  * @type {!Array.<string>}
  */
-build.__CLOSURE_COMPILER_EXTERNS = [
-    'externs/url.js',
-    'externs/events.js',
-    'externs/net.js',
-    'externs/stream.js',
-    'externs/stdio.js',
-    'externs/querystring.js',
-    'externs/http.js',
-    'externs/buffer.js'
-];
+build.__CLOSURE_COMPILER_EXTERNS =
+    build.__CLOSURE_COMPILER_CONFIG['externs'] || [];
 
 
 /**
  * @type {string}
  */
-build.__CLOSURE_COMPILER_FLAGS = [
-  '--warning_level=VERBOSE',
-  '--language_in=ECMASCRIPT5_STRICT',
-  '--jscomp_error=checkTypes',
-  '--jscomp_error=suspiciousCode'
-];
+build.__CLOSURE_COMPILER_FLAGS =
+    build.__CLOSURE_COMPILER_CONFIG['flags'] || [];
 
 
 /**
  * @type {string}
  */
 build.__CLOSURE_COMPILER_PATH =
-    '/usr/lib/closure-compiler/closure-compiler.jar';
+    build.__CLOSURE_COMPILER_CONFIG['path'] || 'closure-compiler.jar';
 
 
 /**
