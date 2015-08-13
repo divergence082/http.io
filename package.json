@@ -6,26 +6,27 @@
     "codec": "0.0.3"
   },
   "devDependencies": {
-    "yaa": "0.0.1"
+    "yaa": "0.0.1",
+    "closurecompiler-externs": "*"
   },
   "scripts": {
     "lint": "node ./build.js lint",
     "check": "node ./build.js check",
     "compile": "node ./build.js compile",
-    "test": "node ./test/codec/codec.js",
+    "test": "node ./test/test.js",
     "build": "npm run lint && npm run check && npm run compile"
   },
   "closure-compiler": {
     "path": "/usr/lib/closure-compiler/closure-compiler.jar",
     "externs": [
+      "externs/util.js",
+      "node_modules/codec/externs/index.js",
       "externs/url.js",
-      "externs/events.js",
-      "externs/net.js",
-      "externs/stream.js",
-      "externs/stdio.js",
-      "externs/http.js",
       "externs/buffer.js",
-      "node_modules/codec/externs/index.js"
+      "externs/events.js",
+      "externs/stream.js",
+      "externs/net.js",
+      "externs/http.js"
     ],
     "flags": [
       "--warning_level=VERBOSE",
