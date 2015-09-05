@@ -4,7 +4,7 @@
   "main": "bin/index.js",
   "dependencies": {
     "iana-http-status-codes": "0.0.4",
-    "iana-http-methods ": "0.0.3"
+    "iana-http-methods ": "0.0.4"
   },
   "devDependencies": {
     "yaa": "0.0.1",
