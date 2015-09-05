@@ -8,13 +8,15 @@
   },
   "devDependencies": {
     "yaa": "0.0.1",
-    "google-closure-compiler": "20150901.0.0"
+    "google-closure-compiler": "20150901.0.0",
+    "externs-extractor-wrapper": "0.0.5"
   },
   "scripts": {
     "clear": "rm -rf bin node_modules",
     "lint": "node ./build.js lint",
     "check": "node ./build.js check",
     "verify": "npm run lint && npm run check",
+    "externs": "node ./build.js externs bin/index.js externs/index.js",
     "compile": "node ./build.js compile",
     "build": "npm run clear && npm i && npm run verify && npm run compile"
   },

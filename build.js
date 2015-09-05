@@ -5,6 +5,7 @@ var fs = require('fs');
 var path = require('path');
 var cp = require('child_process');
 var yaa = require('yaa');
+var x = require('externs-extractor-wrapper');
 var pack = require('./package.json');
 
 
@@ -40,6 +41,8 @@ build.exec = function(command, input, output) {
     task = build.check(input);
   } else if (taskName === 'compile') {
     task = build.compile(input, output);
+  } else if (taskName === 'externs') {
+    task = build.externs(input, output);
   }
 
   /**
@@ -103,6 +106,29 @@ build.compile = function(inputPath, outputPath) {
     yaa.insert(inputPath),
     build.__readFile,
     build.__compile(outputPath)
+  ]);
+};
+
+
+/**
+ * @param {string} inputPath
+ * @param {string} outputPath
+ * @return {!yaa.Step}
+ */
+build.externs = function(inputPath, outputPath) {
+
+  /**
+   * @param {!yaa.CompleteHandler} complete
+   * @param {!yaa.ErrorHandler} cancel
+   * @param {string} data
+   */
+  function saveExterns(complete, cancel, data) {
+    build.__writeFile(complete, cancel, outputPath, data);
+  }
+
+  return yaa.sequence([
+    build.__externs(inputPath),
+    saveExterns
   ]);
 };
 
@@ -261,6 +287,24 @@ build.__compile = function(outputPath) {
 
 
   return compile;
+};
+
+
+/**
+ * @param {string} inputPath
+ * @return {!yaa.Step}
+ */
+build.__externs = function(inputPath) {
+
+  /**
+   * @param {!function(string)} complete
+   * @param {!yaa.ErrorHandler} cancel
+   */
+  function externs(complete, cancel) {
+    x.exec(inputPath, complete, cancel);
+  }
+
+  return externs;
 };
 
 

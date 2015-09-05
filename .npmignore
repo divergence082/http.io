@@ -79,4 +79,5 @@ crashlytics.properties
 crashlytics-build.properties
 
 lib
+test
 build.js
