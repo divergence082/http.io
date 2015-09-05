@@ -3,30 +3,32 @@
   "version": "0.0.1",
   "main": "bin/index.js",
   "dependencies": {
-    "codec": "0.0.3"
+    "iana-http-status-codes": "0.0.2",
+    "iana-http-methods ": "0.0.3"
   },
   "devDependencies": {
-    "yaa": "0.0.1",
-    "closurecompiler-externs": "*"
+    "yaa": "0.0.1"
   },
   "scripts": {
+    "clear": "rm -rf bin externs node_modules",
     "lint": "node ./build.js lint",
     "check": "node ./build.js check",
+    "verify": "npm run lint && npm run check",
     "compile": "node ./build.js compile",
-    "test": "node ./test/test.js",
-    "build": "npm run lint && npm run check && npm run compile"
+    "build": "npm run clear && npm i && npm run verify && npm run compile"
   },
   "closure-compiler": {
     "path": "/usr/lib/closure-compiler/closure-compiler.jar",
     "externs": [
       "externs/util.js",
-      "node_modules/codec/externs/index.js",
       "externs/url.js",
       "externs/buffer.js",
       "externs/events.js",
       "externs/stream.js",
       "externs/net.js",
-      "externs/http.js"
+      "externs/http.js",
+      "node_modules/iana-http-status-codes/externs/index.js",
+      "node_modules/iana-http-methods/externs/index.js"
     ],
     "flags": [
       "--warning_level=VERBOSE",
