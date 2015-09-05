@@ -10,7 +10,7 @@
     "yaa": "0.0.1"
   },
   "scripts": {
-    "clear": "rm -rf bin externs node_modules",
+    "clear": "rm -rf bin node_modules",
     "lint": "node ./build.js lint",
     "check": "node ./build.js check",
     "verify": "npm run lint && npm run check",
