@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "main": "bin/index.js",
   "dependencies": {
-    "iana-http-status-codes": "0.0.2",
+    "iana-http-status-codes": "0.0.4",
     "iana-http-methods ": "0.0.3"
   },
   "devDependencies": {
-    "yaa": "0.0.1"
+    "yaa": "0.0.1",
+    "google-closure-compiler": "20150901.0.0"
   },
   "scripts": {
     "clear": "rm -rf bin node_modules",
@@ -18,9 +19,10 @@
     "build": "npm run clear && npm i && npm run verify && npm run compile"
   },
   "closure-compiler": {
-    "path": "/usr/lib/closure-compiler/closure-compiler.jar",
+    "path": "node_modules/google-closure-compiler/compiler.jar",
     "externs": [
       "externs/util.js",
+      "externs/module.js",
       "externs/url.js",
       "externs/buffer.js",
       "externs/events.js",
