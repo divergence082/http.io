@@ -12,6 +12,7 @@ var status = require('iana-http-status-codes');
 function router(complete, cancel, request) {
   console.log('REQUEST');
   console.log('method:', request.getMethod());
+  console.log('path:', request.getPath());
   console.log('pathname:', request.getPathname());
   console.log('query:', request.getQueryString());
   console.log('payload:', request.getPayload());

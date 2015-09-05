@@ -8,7 +8,7 @@ var h = require('../bin/index.js');
  */
 function complete(response) {
   console.log('RESPONSE');
-  console.log('code:', response.getStatusCode());
+  console.log('status code:', response.getStatusCode());
   console.log('payload:', response.getPayload());
   console.log('headers:', response.getHeaders());
   console.log('--------');
@@ -16,4 +16,4 @@ function complete(response) {
 
 
 h.out.send(complete, console.error, h.out.createRequest(
-    h.in.Endpoint.DEFAULT_HOSTNAME, 8089, '/path'));
+    h.in.Endpoint.DEFAULT_HOSTNAME, 8089, '/path?q=1&w=2'));

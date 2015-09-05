@@ -1,6 +1,6 @@
 # http.io
  
-Lightweight library for work with http requests/responses.
+Lightweight node.js library for work with http requests/responses.
   
   
 ## Create Server:
@@ -19,6 +19,7 @@ var status = require('iana-http-status-codes');
 function router(complete, cancel, request) {
   console.log('REQUEST');
   console.log('method:', request.getMethod());
+  console.log('path:', request.getPath());
   console.log('pathname:', request.getPathname());
   console.log('query:', request.getQueryString());
   console.log('payload:', request.getPayload());
@@ -50,7 +51,7 @@ var h = require('http.io');
  */
 function complete(response) {
   console.log('RESPONSE');
-  console.log('code:', response.getStatusCode());
+  console.log('status code:', response.getStatusCode());
   console.log('payload:', response.getPayload());
   console.log('headers:', response.getHeaders());
   console.log('--------');
