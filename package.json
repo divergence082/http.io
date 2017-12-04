@@ -1,10 +1,10 @@
 {
   "name": "http.io",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "main": "bin/index.js",
   "dependencies": {
     "iana-http-status-codes": "0.0.4",
-    "iana-http-methods ": "0.0.4"
+    "iana-http-methods": "0.0.4"
   },
   "devDependencies": {
     "yaa": "0.0.1",

@@ -81,3 +81,5 @@ crashlytics-build.properties
 lib
 test
 build.js
+
+*-lock*
